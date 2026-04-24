@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+:root {
+  --bg-base: #0a0c10;
+  --bg-surface: #111318;
+  --bg-elevated: #1a1d25;
+  --bg-card: #1e2130;
+  --border: #2a2e3d;
+  --border-light: #363a4f;
+  --accent-orange: #f97316;
+  --accent-orange-dim: #f9731620;
+  --accent-blue: #3b82f6;
+  --accent-blue-dim: #3b82f620;
+  --accent-green: #22c55e;
+  --accent-green-dim: #22c55e20;
+  --accent-purple: #a855f7;
+  --accent-purple-dim: #a855f720;
+  --accent-amber: #f59e0b;
+  --accent-amber-dim: #f59e0b20;
+  --accent-red: #ef4444;
+  --accent-red-dim: #ef444420;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  overflow: hidden;
+}
+
+.react-flow__background { background-color: var(--bg-base); }
+.react-flow__background pattern circle { fill: #2a2e3d; }
+.react-flow__edge-path { stroke: var(--border-light); stroke-width: 2; }
+.react-flow__edge.selected .react-flow__edge-path { stroke: var(--accent-orange); }
+.react-flow__edge:hover .react-flow__edge-path { stroke: var(--accent-blue); }
+
+.react-flow__handle {
+  width: 10px; height: 10px;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-light);
+  transition: all 0.2s;
+}
+.react-flow__handle:hover { background: var(--accent-orange); border-color: var(--accent-orange); transform: scale(1.4); }
+
+.react-flow__controls {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.react-flow__controls-button {
+  background: var(--bg-elevated);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.react-flow__controls-button:hover { background: var(--bg-card); color: var(--text-primary); }
+.react-flow__controls-button svg { fill: currentColor; }
+
+.react-flow__minimap { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.react-flow__minimap-mask { fill: rgba(249, 115, 22, 0.15); }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
+
+.animate-fade-in { animation: fadeIn 0.25s ease both; }
+.animate-slide-in { animation: slideInRight 0.25s ease both; }
+
+.react-flow__node.selected > div {
+  box-shadow: 0 0 0 2px var(--accent-orange), 0 8px 32px rgba(249,115,22,0.2) !important;
+}
