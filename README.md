@@ -1,6 +1,28 @@
 # FlowForge — HR Workflow Designer
 
-A visual HR workflow designer built with React, TypeScript, and React Flow. Design, configure, and simulate internal HR processes like employee onboarding, leave approvals, and document verification — all in a drag-and-drop canvas interface.
+FlowForge is a visual HR workflow designer built with React 19, TypeScript, and React Flow. It lets you drag, connect, and configure workflow nodes on a canvas to model HR processes like employee onboarding, leave approvals, and document verification — with built-in validation, cycle detection, and a step-by-step simulation sandbox. No backend required; all data is in-memory.
+
+---
+
+## Getting Started
+
+**Prerequisites** — Node.js 18 or higher, npm 9 or higher.
+
+**Install and run:**
+```bash
+git clone https://github.com/your-username/hr-workflow-designer.git
+cd hr-workflow-designer
+npm install
+npm run dev
+```
+
+Then open `http://localhost:5173` in your browser.
+
+**For production:**
+```bash
+npm run build
+npm run preview
+```
 
 ---
 
@@ -100,3 +122,62 @@ Accepts the full graph and returns a step-by-step execution log. Also performs s
   "summary": "Workflow executed successfully across 4 step(s)."
 }
 ```
+
+---
+
+## Implemented
+
+**Canvas and nodes**
+- Drag-and-drop nodes from the sidebar palette onto the canvas
+- 5 node types: Start, Task, Approval, Automated Step, End
+- Connect nodes with animated dashed edges
+- Delete nodes and edges via Delete key or Delete button
+- Duplicate node
+- MiniMap with per-type colour coding
+- Zoom controls and empty canvas placeholder
+
+**Configuration**
+- Per-node configuration forms for all 5 node types
+- Dynamic parameter fields in Automated Step node driven by mock API
+- Key-value pair editor for metadata and custom fields
+- Live updates — no save button needed
+
+**Workflow actions**
+- Validation — checks for Start/End presence, connectivity, and cycle detection
+- Simulation sandbox with animated step-by-step execution log
+- Export workflow as downloadable JSON
+- Import workflow from a JSON file
+- Clear canvas with confirmation dialog
+- Live node and edge count in sidebar
+
+---
+
+## Roadmap
+
+**Custom nodes and templates**
+- User-defined node types with configurable shapes, colours, and fields
+- One-click workflow templates for common HR processes (Employee Onboarding, Leave Approval, Exit Checklist)
+- Node template library with save and reuse support
+- Visual node grouping and subflow containers
+
+**Integrations**
+- Slack — post messages, send approval requests, and notify channels directly from Automated Step nodes
+- Notion — create and update pages, databases, and task entries as workflow actions
+- JIRA — create tickets, update issue status, and assign tasks
+- Google Workspace — trigger calendar invites, send Gmail, update Sheets
+- Custom webhook support for connecting any internal or third-party tool
+
+**Custom configurations**
+- Conditional edge logic — branch workflows based on approval outcome (Approved / Rejected) or field values
+- Role-based access — restrict who can view, edit, or trigger specific workflows
+- Workflow versioning — save snapshots and diff between versions
+- Environment configs — separate settings for dev, staging, and production
+- Per-node retry and timeout configuration for automated steps
+
+**Infrastructure**
+- Backend persistence with FastAPI and PostgreSQL
+- Real-time collaboration via WebSocket
+- Undo / Redo using command pattern over Zustand store
+- Auto-layout with Dagre or ELK.js
+- Unit tests with Jest and React Testing Library
+- E2E tests with Playwright
