@@ -10,7 +10,7 @@ FlowForge is a visual HR workflow designer built with React 19, TypeScript, and 
 
 **Install and run:**
 ```bash
-git clone https://github.com/your-username/hr-workflow-designer.git
+git clone https://github.com/san-jay19/hr-workflow-designer.git
 cd hr-workflow-designer
 npm install
 npm run dev
